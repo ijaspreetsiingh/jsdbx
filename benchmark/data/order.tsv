@@ -1,0 +1,8 @@
+﻿docker : mysql: [Warning] Using a password on the command line interface can be insecure.
+At line:10 char:14
++ ... orderData = docker exec jsdb-mysql mysql -u root -pjsdbproof spurtcom ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (mysql: [Warning...an be insecure.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+1	3	NULL	NULL	NULL	99	NULL	INV001	SPURT	SPURT-202602071	NULL	NULL	necaxo8695@codgal.com	89412121548	NULL	Marry	Peter	Marry	No.83, kattabomman street , Vengikkal	Opp to Periyar statue	Tiruvannamalai	606604	India	Tamil Nadu		NULL	Andrew	Clark	Andrew	No. 12, Min nagar 4 th street, vengikkal	Opp to Periyar statue	Tiruvannamalai	606604	India	Tamil Nadu		1	NULL	56.00	NULL	1	NULL	NULL	USD	NULL	2401:4900:4ac8:77a1:a1f9:ee27:5814:e5ff	NULL	NULL	1	NULL	NULL	2026-02-07 05:39:44	2026-02-07 05:39:44	$		NULL	NULL	0	NULL	NULL	NULL	NULL	56.00	1	0		8462122121

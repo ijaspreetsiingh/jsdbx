@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  jsdb-mysql:
+    image: mysql:8.0
+    container_name: jsdb-mysql-test
+    environment:
+      MYSQL_ROOT_PASSWORD: jsdbtest
+      MYSQL_DATABASE: jsdb_test
+    ports:
+      - "3308:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pjsdbtest"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  jsdb-mongodb:
+    image: mongo:7
+    container_name: jsdb-mongodb-test
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DATABASE: jsdb_test
+    ports:
+      - "27018:27017"
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh -u admin -p password123 --authenticationDatabase admin --quiet
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  jsdb-postgres:
+    image: postgres:16-alpine
+    container_name: jsdb-postgres-test
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: "1234"
+      POSTGRES_DB: jsdb_test
+    ports:
+      - "5433:5432"
+    command: postgres -c password_encryption=scram-sha-256 -c listen_addresses='*'
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U root -d jsdb_test"]
+      interval: 5s
+      timeout: 5s
+      retries: 10

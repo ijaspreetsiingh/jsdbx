@@ -1,0 +1,32 @@
+﻿docker : mysql: [Warning] Using a password on the command line interface can be insecure.
+At line:5 char:11
++   $data = docker exec jsdb-mysql mysql -u root -pjsdbproof spurtcomme ...
++           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (mysql: [Warning...an be insecure.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+1	Texture	radio	1	0	1	1	0	NULL	2026-02-07 03:27:33	NULL	2026-02-07 03:27:33	Texture	Texture		
+2	Size	Drop-down	1	0	1	1	0	NULL	2026-02-07 03:28:35	NULL	2026-02-07 03:28:35	size	Size		
+3	Colour	check-box	1	0	1	1	0	NULL	2026-02-07 03:29:52	NULL	2026-02-07 03:29:52	Colour	Colour		
+4	Name	short-text	1	0	1	1	0	NULL	2026-02-07 03:30:10	NULL	2026-02-07 03:30:10	Name	Name		
+5	Weight	radio	1	0	1	1	0	NULL	2026-02-07 03:31:13	NULL	2026-02-07 03:31:13	Weight	weight		
+6	Taste	Drop-down	1	0	1	1	0	NULL	2026-02-07 03:33:51	NULL	2026-02-07 03:33:51	Taste	Taste		
+7	Manufacturing Date	date	1	0	1	1	0	NULL	2026-02-07 03:39:48	NULL	2026-02-07 03:39:48	Manufacturing date	Manufacturing date		
+8	Expiry Date	date	1	0	1	1	0	NULL	2026-02-07 03:40:28	NULL	2026-02-07 03:40:28	Expiry Date	Expiry Date		
+9	Variety	check-box	1	0	1	1	0	NULL	2026-02-07 04:28:21	NULL	2026-02-07 04:28:21	Variety	Variety		
+10	Growth 	check-box	1	0	1	1	0	NULL	2026-02-07 04:45:33	NULL	2026-02-07 04:45:33	Growth	Growth		
+11	Size	radio	1	0	1	1	0	NULL	2026-02-09 13:37:54	NULL	2026-02-09 13:37:54	Size	Size		
+12	Fabric Type	Drop-down	1	0	1	1	0	NULL	2026-02-10 01:16:04	NULL	2026-02-10 01:16:04	Fabric Type	Fabric Type		
+13	Neck line	check-box	1	0	1	1	0	NULL	2026-02-10 01:17:24	NULL	2026-02-10 01:17:24	Neck line	Neck line		
+14	Brand Name	short-text	1	0	1	1	0	NULL	2026-02-10 01:18:33	NULL	2026-02-10 01:18:33	Brand Name	Brand Name		
+15	Occasions	check-box	1	0	1	1	0	NULL	2026-02-10 01:22:02	NULL	2026-02-10 01:22:02	Occasions	Occasions		
+16	Fit	Drop-down	1	0	1	1	0	NULL	2026-02-10 01:23:32	NULL	2026-02-10 01:23:32	Fit	Fit		
+17	Sleeve	radio	1	0	1	1	0	NULL	2026-02-10 01:24:53	NULL	2026-02-10 01:24:53	Sleeve	Sleeve		
+18	Bottom shape	Drop-down	1	0	1	1	0	NULL	2026-02-10 01:26:08	NULL	2026-02-10 01:26:08	Bottom Shape	Bottom Shape		
+19	Power Capacity	Drop-down	1	0	1	1	0	NULL	2026-02-10 05:07:11	NULL	2026-02-10 05:07:11	Power Capacity	Power Capacity		
+20	Frequency range	radio	1	0	1	1	0	NULL	2026-02-10 05:08:57	NULL	2026-02-10 05:08:57	Frequency range	Frequency range 		
+21	Impedence	radio	1	0	1	1	0	NULL	2026-02-10 05:09:43	NULL	2026-02-10 05:09:43	Impedence	Impedence		
+22	Product Stability	check-box	1	0	1	1	0	NULL	2026-02-10 05:29:34	NULL	2026-02-10 05:29:34	Product Stability	Product Stability		
+23	Skin type Product	Drop-down	1	0	1	1	0	NULL	2026-02-10 05:30:31	NULL	2026-02-10 05:30:31	Skin type Product	Skin type Product		
+24	Texture	Drop-down	1	0	1	1	0	NULL	2026-02-10 05:31:22	NULL	2026-02-10 05:31:22	Texture	Texture		
+25	Ingredients	radio	1	0	1	1	0	NULL	2026-02-10 05:35:24	NULL	2026-02-10 05:35:24	Ingredients	Ingredients		

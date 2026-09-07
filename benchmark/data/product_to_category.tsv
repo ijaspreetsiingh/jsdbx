@@ -1,0 +1,14 @@
+﻿docker : mysql: [Warning] Using a password on the command line interface can be insecure.
+At line:5 char:11
++   $data = docker exec jsdb-mysql mysql -u root -pjsdbproof spurtcomme ...
++           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (mysql: [Warning...an be insecure.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+54	5	2	1	NULL	NULL	2026-02-10 07:37:54	NULL
+55	14	6	1	NULL	NULL	2026-02-10 07:39:39	NULL
+56	13	7	1	NULL	NULL	2026-02-10 07:40:33	NULL
+57	12	7	1	NULL	NULL	2026-02-10 07:42:14	NULL
+58	10	6	1	NULL	NULL	2026-02-10 07:43:10	NULL
+59	9	4	1	NULL	NULL	2026-02-10 07:44:19	NULL
+60	8	4	1	NULL	NULL	2026-02-10 07:45:34	NULL

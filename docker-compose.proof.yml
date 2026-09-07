@@ -1,0 +1,67 @@
+version: '3.8'
+
+# ================================================================
+# JSDB Proof Databases
+# Ports deliberately different from docker-compose.test.yml
+# so both can run simultaneously without conflicts.
+#
+# MySQL  → host port 3309  (test uses 3308)
+# MongoDB → host port 27019  (test uses 27018)
+# Postgres → host port 5435  (test uses 5433)
+#
+# Start:  docker compose -f docker-compose.proof.yml up -d
+# Stop:   docker compose -f docker-compose.proof.yml down -v
+# ================================================================
+
+services:
+
+  proof-mysql:
+    image: mysql:8.0
+    container_name: jsdb-proof-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: jsdbproof
+      MYSQL_DATABASE: jsdb_proof
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3309:3306"
+    command: >
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pjsdbproof"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+      start_period: 30s
+
+  proof-mongodb:
+    image: mongo:7
+    container_name: jsdb-proof-mongodb
+    environment:
+      # No auth — standalone mode, proof use only
+      MONGO_INITDB_DATABASE: jsdb_proof
+    ports:
+      - "27019:27017"
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.runCommand('ping').ok"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+      start_period: 20s
+
+  proof-postgres:
+    image: postgres:16-alpine
+    container_name: jsdb-proof-postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: jsdbproof
+      POSTGRES_DB: jsdb_proof
+    ports:
+      - "5435:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U root -d jsdb_proof"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+      start_period: 15s

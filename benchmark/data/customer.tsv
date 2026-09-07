@@ -1,0 +1,13 @@
+﻿docker : mysql: [Warning] Using a password on the command line interface can be insecure.
+At line:5 char:11
++   $data = docker exec jsdb-mysql mysql -u root -pjsdbproof spurtcomme ...
++           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (mysql: [Warning...an be insecure.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+1	Shelly	Clinton	piccotvm87@gmail.com	piccotvm87@gmail.com	$2b$10$w993PvzkAEpL6TWFkL/eKOjpwhVvCW/lOQUiybdzVWyI5.V7i05Na	9456415445	NULL	NULL	NULL	NULL	Img_1770632547763.jpeg	customer/	0	0	NULL	2026-02-09 12:57:37	NULL	NULL	NULL	NULL	NULL	NULL	1	NULL	NULL	2026-02-06 13:48:22	2026-02-09 12:57:37	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+2	Maya	Mathew	jajop29902@cimario.com	jajop29902@cimario.com	$2b$10$iSJz5qdpZotF3cKW34KCdOc5PVY1SaqhW7AGf.hilKMwQlfRoM1Ou	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	1	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	1	NULL	NULL	2026-02-07 04:07:21	2026-02-10 07:26:16	NULL	NULL	NULL	2	NULL	NULL	NULL	NULL	NULL	NULL
+3	Martha	Handerson	necaxo8695@codgal.com	necaxo8695@codgal.com	$2b$10$ejxXZMGvEQZXKmQOzo.rzOjRfcMEdJeaZnp51DiUjtkZJMqsgFUXK	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	1	NULL	2026-02-07 04:35:57	NULL	NULL	NULL	NULL	NULL	NULL	1	NULL	NULL	2026-02-07 04:35:34	2026-02-10 07:26:20	NULL	NULL	NULL	2	NULL	NULL	NULL	NULL	NULL	NULL
+4	Harishbabu	G	piccotalent195@gmail.com	piccotalent195@gmail.com	$2b$10$VAnaryH2hDZgJ5ZaiBLExeA6BjTKxxxZ8/bUJHHyGzDe8kKyVgEwu	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	1	NULL	2026-02-09 05:32:58	NULL	NULL	NULL	NULL	NULL	NULL	1	NULL	NULL	2026-02-09 05:32:46	2026-02-10 07:26:26	NULL	NULL	NULL	2	NULL	NULL	NULL	NULL	NULL	NULL
+5	keerthana	s	piccotvm25@gmail.co	piccotvm25@gmail.co	$2b$10$udXTPqO/t1AfbXKE/SOLXO8RENYKuXTOlfEjW2/RNZ37k5lQQ8qtC	979796986986	NULL	NULL	NULL	NULL	Img_1770622947964.png	customer/	1	1	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	1	NULL	NULL	2026-02-09 07:42:28	2026-02-10 07:26:29	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+6	Shantha	Priya	mariya25@gmail.com	mariya25@gmail.com	$2b$10$Bsv2Gjp0dg8q2WqLYw16aeJ5SZ7YA3cFCAt9BykU2oMvDNDPqKh2u	6541231231	NULL	NULL	NULL	NULL	NULL	NULL	1	1	NULL	2026-02-09 10:20:19	NULL	NULL	NULL	NULL	NULL	NULL	1	NULL	NULL	2026-02-09 10:18:05	2026-02-10 07:26:34	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL	NULL

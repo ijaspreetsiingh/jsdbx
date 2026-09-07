@@ -1,0 +1,268 @@
+{
+  "name": "jasdbx",
+  "version": "2.0.0",
+  "description": "JSDB v2.0 - Enterprise JavaScript Database Runtime. High-performance, scalable, production-ready universal database portability framework.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "jasdbx": "dist/cli/index.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./client": {
+      "import": "./dist/client/index.mjs",
+      "require": "./dist/client/index.js",
+      "types": "./dist/client/index.d.ts"
+    },
+    "./ir": {
+      "import": "./dist/ir/index.mjs",
+      "require": "./dist/ir/index.js",
+      "types": "./dist/ir/index.d.ts"
+    },
+    "./capabilities": {
+      "import": "./dist/capabilities/index.mjs",
+      "require": "./dist/capabilities/index.js",
+      "types": "./dist/capabilities/index.d.ts"
+    },
+    "./planner": {
+      "import": "./dist/planner/index.mjs",
+      "require": "./dist/planner/index.js",
+      "types": "./dist/planner/index.d.ts"
+    },
+    "./adapters": {
+      "import": "./dist/adapters/index.mjs",
+      "require": "./dist/adapters/index.js",
+      "types": "./dist/adapters/index.d.ts"
+    },
+    "./adapters/mysql": {
+      "import": "./dist/adapters/mysql/index.mjs",
+      "require": "./dist/adapters/mysql/index.js",
+      "types": "./dist/adapters/mysql/index.d.ts"
+    },
+    "./adapters/mongodb": {
+      "import": "./dist/adapters/mongodb/index.mjs",
+      "require": "./dist/adapters/mongodb/index.js",
+      "types": "./dist/adapters/mongodb/index.d.ts"
+    },
+    "./adapters/postgres": {
+      "import": "./dist/adapters/postgres/index.mjs",
+      "require": "./dist/adapters/postgres/index.js",
+      "types": "./dist/adapters/postgres/index.d.ts"
+    },
+    "./adapters/sqlite": {
+      "import": "./dist/adapters/sqlite/index.mjs",
+      "require": "./dist/adapters/sqlite/index.js",
+      "types": "./dist/adapters/sqlite/index.d.ts"
+    },
+    "./cache": {
+      "import": "./dist/cache/index.mjs",
+      "require": "./dist/cache/index.js",
+      "types": "./dist/cache/index.d.ts"
+    },
+    "./schema": {
+      "import": "./dist/schema/index.mjs",
+      "require": "./dist/schema/index.js",
+      "types": "./dist/schema/index.d.ts"
+    },
+    "./migration": {
+      "import": "./dist/migration/index.mjs",
+      "require": "./dist/migration/index.js",
+      "types": "./dist/migration/index.d.ts"
+    },
+    "./security": {
+      "import": "./dist/security/index.mjs",
+      "require": "./dist/security/index.js",
+      "types": "./dist/security/index.d.ts"
+    },
+    "./observability": {
+      "import": "./dist/observability/index.mjs",
+      "require": "./dist/observability/index.js",
+      "types": "./dist/observability/index.d.ts"
+    },
+    "./realtime": {
+      "import": "./dist/realtime/index.mjs",
+      "require": "./dist/realtime/index.js",
+      "types": "./dist/realtime/index.d.ts"
+    },
+    "./analyzers": {
+      "import": "./dist/analyzers/index.mjs",
+      "require": "./dist/analyzers/index.js",
+      "types": "./dist/analyzers/index.d.ts"
+    },
+    "./errors": {
+      "import": "./dist/errors/index.mjs",
+      "require": "./dist/errors/index.js",
+      "types": "./dist/errors/index.d.ts"
+    },
+    "./mysql2": {
+      "import": "./dist/compat/mysql2.mjs",
+      "require": "./dist/compat/mysql2.js",
+      "types": "./dist/compat/mysql2.d.ts"
+    },
+    "./pg": {
+      "import": "./dist/compat/pg.mjs",
+      "require": "./dist/compat/pg.js",
+      "types": "./dist/compat/pg.d.ts"
+    },
+    "./mysql": {
+      "import": "./dist/compat/mysql.mjs",
+      "require": "./dist/compat/mysql.js",
+      "types": "./dist/compat/mysql.d.ts"
+    },
+    "./register": {
+      "import": "./dist/compat/register.mjs",
+      "require": "./dist/compat/register.js",
+      "types": "./dist/compat/register.d.ts"
+    },
+    "./compat": {
+      "import": "./dist/compat/index.mjs",
+      "require": "./dist/compat/index.js",
+      "types": "./dist/compat/index.d.ts"
+    },
+    "./mongodb": {
+      "import": "./dist/compat/mongodb.mjs",
+      "require": "./dist/compat/mongodb.js",
+      "types": "./dist/compat/mongodb.d.ts"
+    },
+    "./mongoose": {
+      "import": "./dist/compat/mongoose.mjs",
+      "require": "./dist/compat/mongoose.js",
+      "types": "./dist/compat/mongoose.d.ts"
+    },
+    "./loader": {
+      "import": "./dist/compat/loader.mjs"
+    },
+    "./enterprise": {
+      "import": "./dist/enterprise/index.mjs",
+      "require": "./dist/enterprise/index.js",
+      "types": "./dist/enterprise/index.d.ts"
+    },
+    "./pool": {
+      "import": "./dist/pool/connection-pool.mjs",
+      "require": "./dist/pool/connection-pool.js",
+      "types": "./dist/pool/connection-pool.d.ts"
+    },
+    "./resilience": {
+      "import": "./dist/resilience/circuit-breaker.mjs",
+      "require": "./dist/resilience/circuit-breaker.js",
+      "types": "./dist/resilience/circuit-breaker.d.ts"
+    },
+    "./monitoring": {
+      "import": "./dist/monitoring/metrics.mjs",
+      "require": "./dist/monitoring/metrics.js",
+      "types": "./dist/monitoring/metrics.d.ts"
+    },
+    "./streaming": {
+      "import": "./dist/streaming/cursor.mjs",
+      "require": "./dist/streaming/cursor.js",
+      "types": "./dist/streaming/cursor.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "build:watch": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:proof": "vitest run --config vitest.proof.config.ts",
+    "test:proof:docker": "cross-env PROOF_USE_DOCKER=1 vitest run --config vitest.proof.config.ts",
+    "test:matrix": "vitest run --config vitest.matrix.config.ts",
+    "proof:up": "docker compose -f docker-compose.proof.yml up -d",
+    "proof:down": "docker compose -f docker-compose.proof.yml down -v",
+    "proof:run": "node scripts/run-proof.mjs",
+    "lint": "eslint src tests --ext .ts",
+    "lint:fix": "eslint src tests --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run clean && npm run build && npm run typecheck",
+    "pack": "npm pack"
+  },
+  "keywords": [
+    "database",
+    "orm",
+    "query-builder",
+    "mysql",
+    "mongodb",
+    "postgresql",
+    "sqlite",
+    "portability",
+    "universal",
+    "runtime",
+    "enterprise",
+    "high-performance",
+    "scalable",
+    "connection-pool",
+    "circuit-breaker",
+    "rate-limiter",
+    "query-optimizer",
+    "streaming",
+    "bulk-operations"
+  ],
+  "author": "JSDB Contributors",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jsdb/jsdb"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "chalk": "4.1.2",
+    "commander": "12.1.0",
+    "dotenv": "16.4.5",
+    "ora": "5.4.1",
+    "table": "6.8.2"
+  },
+  "optionalDependencies": {
+    "better-sqlite3": "^11.10.0",
+    "mongodb": "6.6.2",
+    "mysql2": "3.9.7",
+    "pg": "8.11.5"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "7.6.10",
+    "@types/node": "20.12.12",
+    "@types/pg": "8.11.6",
+    "@typescript-eslint/eslint-plugin": "7.10.0",
+    "@typescript-eslint/parser": "7.10.0",
+    "@vitest/coverage-v8": "1.6.0",
+    "eslint": "8.57.0",
+    "pg": "^8.23.0",
+    "prettier": "3.2.5",
+    "rimraf": "5.0.7",
+    "tsup": "8.1.0",
+    "typescript": "5.4.5",
+    "vitest": "1.6.0"
+  },
+  "peerDependencies": {
+    "mongodb": ">=5.0.0",
+    "mysql2": ">=3.0.0",
+    "pg": ">=8.0.0"
+  },
+  "peerDependenciesMeta": {
+    "mysql2": {
+      "optional": true
+    },
+    "mongodb": {
+      "optional": true
+    },
+    "pg": {
+      "optional": true
+    },
+    "better-sqlite3": {
+      "optional": true
+    }
+  }
+}

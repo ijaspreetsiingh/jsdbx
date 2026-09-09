@@ -5,9 +5,9 @@
 // scenarios identified in the coverage audit.
 // =====================================================
 
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, _beforeAll, _afterAll } from 'vitest';
 import { MemoryAdapter } from '../../src/adapters/memory/adapter.js';
-import { setSharedAdapter, resetSharedAdapter, execSQL } from '../../src/compat/core.js';
+import { setSharedAdapter, _resetSharedAdapter, execSQL } from '../../src/compat/core.js';
 
 const memAdapter = new MemoryAdapter({ database: 'sqlite' });
 setSharedAdapter(memAdapter, { database: 'sqlite' });

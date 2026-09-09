@@ -13,7 +13,7 @@
 // =====================================================
 
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
-import { execSQL, ensureConnected, resetSharedAdapter } from '../../src/compat/core.js';
+import { execSQL, _ensureConnected, _resetSharedAdapter } from '../../src/compat/core.js';
 
 const MONGO_URI = process.env.JSDB_MONGODB_URI ?? 'mongodb://localhost:27019';
 const MONGO_DB = process.env.JSDB_MONGODB_DATABASE ?? 'jsdb_test';
@@ -34,13 +34,13 @@ describe('DDL + DML Chain — Full Integration (MongoDB)', () => {
     // Cleanup from previous runs
     try {
       await execSQL(`DROP TABLE IF EXISTS ${TABLE}`);
-    } catch {}
+    } catch { /* cleanup */ }
   }, 15000);
 
   afterAll(async () => {
     try {
       await execSQL(`DROP TABLE IF EXISTS ${TABLE}`);
-    } catch {}
+    } catch { /* cleanup */ }
   }, 10000);
 
   // ─── DDL Tests ───────────────────────────────────────
@@ -280,7 +280,7 @@ describe('DDL + DML Chain — Full Integration (MongoDB)', () => {
 
     afterAll(async () => {
       for (const t of tables) {
-        try { await execSQL(`DROP TABLE IF EXISTS ${t}`); } catch {}
+        try { await execSQL(`DROP TABLE IF EXISTS ${t}`); } catch { /* cleanup */ }
       }
     });
 

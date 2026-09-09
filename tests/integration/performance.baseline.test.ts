@@ -2,7 +2,7 @@
 // JSDB - Performance Baseline
 // Basic benchmarks for find/insert/update/aggregation
 // =====================================================
-import { describe, it, beforeAll, afterAll } from 'vitest';
+import { describe, it, _beforeAll, afterAll } from 'vitest';
 import { createClient, type JSDBClient } from '../../src/index.js';
 
 const MYSQL_CONFIG = {
@@ -117,12 +117,12 @@ async function runBenchmarksForDb(label: string, config: typeof MYSQL_CONFIG): P
     } else if (label === 'PostgreSQL') {
       await client.raw(`CREATE TABLE IF NOT EXISTS "${BENCH_COLLECTION}" (id SERIAL PRIMARY KEY, name TEXT, age INT, score DECIMAL(10,2))`);
     }
-  } catch {}
+  } catch { /* ignore */ }
 
   // Clean slate
-  try { await client.raw(`DELETE FROM \`${BENCH_COLLECTION}\``); } catch {}
-  try { await client.raw(`DELETE FROM "${BENCH_COLLECTION}"`); } catch {}
-  try { await coll.deleteMany({}); } catch {}
+  try { await client.raw(`DELETE FROM \`${BENCH_COLLECTION}\``); } catch { /* ignore */ }
+  try { await client.raw(`DELETE FROM "${BENCH_COLLECTION}"`); } catch { /* ignore */ }
+  try { await coll.deleteMany({}); } catch { /* ignore */ }
 
   const N = 100;
   const results: BenchResult[] = [];
@@ -134,8 +134,8 @@ async function runBenchmarksForDb(label: string, config: typeof MYSQL_CONFIG): P
   results.push(await benchCount(client, label, N));
 
   // Cleanup
-  try { await client.raw(`DROP TABLE IF EXISTS \`${BENCH_COLLECTION}\``); } catch {}
-  try { await coll.deleteMany({}); } catch {}
+  try { await client.raw(`DROP TABLE IF EXISTS \`${BENCH_COLLECTION}\``); } catch { /* cleanup */ }
+  try { await coll.deleteMany({}); } catch { /* cleanup */ }
 
   await client.disconnect();
   return results;

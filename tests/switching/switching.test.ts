@@ -46,8 +46,8 @@ describe('Database Switching Proof', () => {
   }, 30000);
 
   afterAll(async () => {
-    try { await mysqlClient.raw('DROP TABLE IF EXISTS switch_test_users'); } catch {}
-    try { await mongoClient.collection('switch_test_users').deleteMany({}); } catch {}
+    try { await mysqlClient.raw('DROP TABLE IF EXISTS switch_test_users'); } catch { /* cleanup */ }
+    try { await mongoClient.collection('switch_test_users').deleteMany({}); } catch { /* cleanup */ }
     await mysqlClient.disconnect();
     await mongoClient.disconnect();
   }, 10000);

@@ -62,17 +62,17 @@ describe('Cross-Database Conformance', () => {
   }, 30000);
 
   afterAll(async () => {
-    try { await cleanupMySQL(mysqlClient); } catch {}
-    try { await mysqlClient.raw(`DELETE FROM \`${COLLECTION}\``); } catch {}
+    try { await cleanupMySQL(mysqlClient); } catch { /* cleanup */ }
+    try { await mysqlClient.raw(`DELETE FROM \`${COLLECTION}\``); } catch { /* cleanup */ }
     await mysqlClient.disconnect();
 
-    try { await mongoClient.collection(COLLECTION).deleteMany({}); } catch {}
+    try { await mongoClient.collection(COLLECTION).deleteMany({}); } catch { /* cleanup */ }
     await mongoClient.disconnect();
   }, 10000);
 
   beforeEach(async () => {
-    try { await mysqlClient.raw(`DELETE FROM \`${COLLECTION}\``); } catch {}
-    try { await mongoClient.collection(COLLECTION).deleteMany({}); } catch {}
+    try { await mysqlClient.raw(`DELETE FROM \`${COLLECTION}\``); } catch { /* cleanup */ }
+    try { await mongoClient.collection(COLLECTION).deleteMany({}); } catch { /* cleanup */ }
   });
 
   // ---- CRUD Conformance ----
@@ -338,7 +338,7 @@ describe('Cross-Database Conformance', () => {
           await tx.collection(COLLECTION).insertOne({ name: 'TxRollback', age: 60 });
           throw new Error('Force rollback');
         });
-      } catch {}
+      } catch { /* expected rollback */ }
 
       const mysqlCount = await mysqlClient.collection(COLLECTION).count({});
       expect(mysqlCount).toBe(1);
@@ -367,7 +367,7 @@ describe('Cross-Database Conformance', () => {
           await tx.collection(COLLECTION).insertOne({ name: 'TxRollback', age: 60 });
           throw new Error('Force rollback');
         });
-      } catch {}
+      } catch { /* expected rollback */ }
 
       const mongoCount = await mongoClient.collection(COLLECTION).count({});
       expect(mongoCount).toBe(1);

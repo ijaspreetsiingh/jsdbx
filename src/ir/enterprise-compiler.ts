@@ -5,7 +5,7 @@
 // Stored Procedures, Views, Transactions, DDL
 // =====================================================
 import type { CTEDefinition, WindowFunctionSpec, TriggerDefinition, StoredProcedureDefinition, ViewDefinition, TransactionIsolation, ColumnDefinition, DDLIndexDefinition, AlterTableOperation } from '../types/index.js';
-import type { EnterpriseIRNode, EnterpriseParseResult } from './enterprise-parser.js';
+import type { EnterpriseParseResult } from './enterprise-parser.js';
 
 // ---- Compiler Options ----
 
@@ -231,7 +231,6 @@ END`;
 
 function compileMssqlTrigger(trigger: TriggerDefinition): string {
   const events = trigger.events.join(' OR ');
-  const forEach = trigger.forEachRow ? 'FOR EACH ROW' : '';
   
   return `CREATE TRIGGER ${trigger.name}
 ON ${trigger.table}
@@ -417,7 +416,6 @@ export function compileBatch(operations: Array<{ type: string; collection: strin
           const values = op.documents.map(doc => {
             if (typeof doc === 'object' && doc !== null) {
               const entries = Object.entries(doc as Record<string, unknown>);
-              const cols = entries.map(([k]) => k).join(', ');
               const vals = entries.map(([, v]) => formatValue(v, options)).join(', ');
               return `(${vals})`;
             }
@@ -445,7 +443,7 @@ export function compileBatch(operations: Array<{ type: string; collection: strin
   return results;
 }
 
-function formatValue(value: unknown, options: CompilerOptions): string {
+function formatValue(value: unknown, _options: CompilerOptions): string {
   if (value === null || value === undefined) return 'NULL';
   if (typeof value === 'number') return String(value);
   if (typeof value === 'boolean') return value ? 'TRUE' : 'FALSE';
@@ -464,7 +462,7 @@ export function checkFeatureSupport(feature: string, options: CompilerOptions): 
 // ---- Main Compile Function ----
 
 export function compileEnterprise(parseResult: EnterpriseParseResult, options: CompilerOptions): string {
-  const { type, ctes, windowFunctions, data } = parseResult;
+  const { type, ctes, windowFunctions: _windowFunctions, data } = parseResult;
   
   // Compile CTEs if present
   let cteClause = '';
@@ -486,11 +484,12 @@ export function compileEnterprise(parseResult: EnterpriseParseResult, options: C
     case 'view':
       return compileView(data as ViewDefinition, options);
     
-    case 'transaction':
+    case 'transaction': {
       const txData = data as { type: string; data?: TransactionIsolation | { name: string } };
       return compileTransaction(txData.type, options, txData.data as TransactionIsolation, (txData.data as { name: string })?.name);
+    }
     
-    case 'ddl':
+    case 'ddl': {
       const ddlData = data as { type: string; name?: string; table?: string; columns?: ColumnDefinition[]; column?: ColumnDefinition; columnName?: string; newName?: string; index?: DDLIndexDefinition };
       if (ddlData.type === 'create_table') {
         return compileCreateTable(ddlData.name || '', ddlData.columns || [], options);
@@ -499,6 +498,7 @@ export function compileEnterprise(parseResult: EnterpriseParseResult, options: C
         return compileCreateIndex(ddlData.index || { name: '', table: '', columns: [] }, options);
       }
       return compileAlterTable(data as AlterTableOperation, options);
+    }
     
     case 'batch':
       return compileBatch(data as Array<{ type: string; collection: string; documents?: unknown[]; filter?: unknown; update?: unknown }>, options).join(';\n');

@@ -131,11 +131,11 @@ describe('JOIN Conformance', () => {
   }, 30000);
 
   afterAll(async () => {
-    try { await resetMySQL(mysql); } catch {}
-    try { await mongo.collection(USERS_T).deleteMany({}); } catch {}
-    try { await mongo.collection(ORDERS_T).deleteMany({}); } catch {}
-    try { await mongo.collection(ITEMS_T).deleteMany({}); } catch {}
-    try { await resetPG(pg); } catch {}
+    try { await resetMySQL(mysql); } catch { /* cleanup */ }
+    try { await mongo.collection(USERS_T).deleteMany({}); } catch { /* cleanup */ }
+    try { await mongo.collection(ORDERS_T).deleteMany({}); } catch { /* cleanup */ }
+    try { await mongo.collection(ITEMS_T).deleteMany({}); } catch { /* cleanup */ }
+    try { await resetPG(pg); } catch { /* cleanup */ }
     await mysql.disconnect();
     await mongo.disconnect();
     await pg.disconnect();

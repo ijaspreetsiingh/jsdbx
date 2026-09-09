@@ -31,7 +31,7 @@ beforeAll(async () => {
   await adapter.connect();
 });
 
-function cb<T>(fn: (done: (err?: Error) => void) => void): Promise<T> {
+function _cb<T>(fn: (done: (err?: Error) => void) => void): Promise<T> {
   return new Promise<T>((resolve, reject) => {
     fn((err) => {
       if (err) reject(err);

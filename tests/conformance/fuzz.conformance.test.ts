@@ -86,15 +86,15 @@ describe('Fuzz Conformance', () => {
   }, 30000);
 
   afterAll(async () => {
-    try { await mysql.raw(`DROP TABLE IF EXISTS \`${T}\``); } catch {}
-    try { await pg.raw(`DROP TABLE IF EXISTS "${T}"`); } catch {}
+    try { await mysql.raw(`DROP TABLE IF EXISTS \`${T}\``); } catch { /* cleanup */ }
+    try { await pg.raw(`DROP TABLE IF EXISTS "${T}"`); } catch { /* cleanup */ }
     await mysql.disconnect();
     await pg.disconnect();
   }, 10000);
 
   beforeEach(async () => {
-    try { await mysql.raw(`TRUNCATE TABLE \`${T}\``); } catch {}
-    try { await pg.raw(`TRUNCATE TABLE "${T}"`); } catch {}
+    try { await mysql.raw(`TRUNCATE TABLE \`${T}\``); } catch { /* cleanup */ }
+    try { await pg.raw(`TRUNCATE TABLE "${T}"`); } catch { /* cleanup */ }
   });
 
   describe('Random insert operations', () => {

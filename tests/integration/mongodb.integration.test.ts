@@ -28,7 +28,7 @@ describe('MongoDB Integration', () => {
     if (client) {
       try {
         await client.collection(TEST_COLLECTION).deleteMany({});
-      } catch {}
+      } catch { /* cleanup */ }
       await client.disconnect();
     }
   }, 10000);
@@ -36,7 +36,7 @@ describe('MongoDB Integration', () => {
   beforeEach(async () => {
     try {
       await client.collection(TEST_COLLECTION).deleteMany({});
-    } catch {}
+    } catch { /* cleanup */ }
   });
 
   // ---- CRUD ----

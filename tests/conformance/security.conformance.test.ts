@@ -55,8 +55,8 @@ describe('Security Conformance', () => {
   }, 30000);
 
   afterAll(async () => {
-    try { await mysql.raw(`DROP TABLE IF EXISTS \`${T}\``); } catch {}
-    try { await pg.raw(`DROP TABLE IF EXISTS "${T}"`); } catch {}
+    try { await mysql.raw(`DROP TABLE IF EXISTS \`${T}\``); } catch { /* cleanup */ }
+    try { await pg.raw(`DROP TABLE IF EXISTS "${T}"`); } catch { /* cleanup */ }
     await mysql.disconnect();
     await pg.disconnect();
   }, 10000);
@@ -201,7 +201,7 @@ describe('Security Conformance', () => {
         expect(result.length).toBe(1);
         expect(result[0].val).toBe('secret_data');
       } finally {
-        try { await client2.raw(`DROP TABLE IF EXISTS \`${T}_isolated\``); } catch {}
+        try { await client2.raw(`DROP TABLE IF EXISTS \`${T}_isolated\``); } catch { /* cleanup */ }
         await client2.disconnect();
       }
     });

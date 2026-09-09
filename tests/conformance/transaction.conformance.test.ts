@@ -52,15 +52,15 @@ describe('Transaction Conformance', () => {
   }, 30000);
 
   afterAll(async () => {
-    try { await mysql.raw(`DROP TABLE IF EXISTS \`${T}\``); } catch {}
-    try { await pg.raw(`DROP TABLE IF EXISTS "${T}"`); } catch {}
+    try { await mysql.raw(`DROP TABLE IF EXISTS \`${T}\``); } catch { /* cleanup */ }
+    try { await pg.raw(`DROP TABLE IF EXISTS "${T}"`); } catch { /* cleanup */ }
     await mysql.disconnect();
     await pg.disconnect();
   }, 10000);
 
   beforeEach(async () => {
-    try { await mysql.raw(`DELETE FROM \`${T}\``); } catch {}
-    try { await pg.raw(`DELETE FROM "${T}"`); } catch {}
+    try { await mysql.raw(`DELETE FROM \`${T}\``); } catch { /* cleanup */ }
+    try { await pg.raw(`DELETE FROM "${T}"`); } catch { /* cleanup */ }
   });
 
   describe('COMMIT', () => {
@@ -132,7 +132,7 @@ describe('Transaction Conformance', () => {
           await ctx.collection(T).insertOne({ name: 'Bob', balance: 2000 });
           throw new Error('abort');
         });
-      } catch {}
+        } catch { /* expected rollback */ }
       const result = await mysql.collection(T).find({ name: 'Bob' });
       expect(result.length).toBe(0);
     });
@@ -143,7 +143,7 @@ describe('Transaction Conformance', () => {
           await ctx.collection(T).insertOne({ name: 'Bob', balance: 2000 });
           throw new Error('abort');
         });
-      } catch {}
+      } catch { /* expected rollback */ }
       const result = await pg.collection(T).find({ name: 'Bob' });
       expect(result.length).toBe(0);
     });
@@ -158,7 +158,7 @@ describe('Transaction Conformance', () => {
           );
           throw new Error('abort');
         });
-      } catch {}
+        } catch { /* expected rollback */ }
       const result = await mysql.collection(T).findOne({ name: 'Alice' });
       expect(Number(result.balance)).toBe(1000);
     });
@@ -173,7 +173,7 @@ describe('Transaction Conformance', () => {
           );
           throw new Error('abort');
         });
-      } catch {}
+      } catch { /* expected rollback */ }
       const result = await pg.collection(T).findOne({ name: 'Alice' });
       expect(Number(result.balance)).toBe(1000);
     });
@@ -185,7 +185,7 @@ describe('Transaction Conformance', () => {
           await ctx.collection(T).deleteOne({ name: 'Alice' });
           throw new Error('abort');
         });
-      } catch {}
+        } catch { /* expected rollback */ }
       const result = await mysql.collection(T).find({ name: 'Alice' });
       expect(result.length).toBe(1);
     });
@@ -197,7 +197,7 @@ describe('Transaction Conformance', () => {
           await ctx.collection(T).deleteOne({ name: 'Alice' });
           throw new Error('abort');
         });
-      } catch {}
+      } catch { /* expected rollback */ }
       const result = await pg.collection(T).find({ name: 'Alice' });
       expect(result.length).toBe(1);
     });

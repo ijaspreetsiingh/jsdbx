@@ -28,6 +28,8 @@ export default defineConfig({
     'compat/mongodb': 'src/compat/mongodb.ts',
     'compat/mongoose': 'src/compat/mongoose.ts',
     'compat/register': 'src/compat/register.ts',
+    'plugins/express': 'src/plugins/express.ts',
+    'plugins/jasapi': 'src/plugins/jasapi.ts',
   },
   format: ['cjs', 'esm'],
   dts: true,

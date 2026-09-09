@@ -57,7 +57,7 @@ beforeEach(async () => {
     await adapter.executeRaw('DELETE FROM "users"');
     await adapter.executeRaw('DELETE FROM "orders"');
     await adapter.executeRaw('DELETE FROM sqlite_sequence WHERE name IN ("users", "orders")');
-  } catch {}
+  } catch { /* cleanup */ }
 });
 
 describe('SQLite Conformance Tests', () => {

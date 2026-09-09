@@ -4,7 +4,7 @@ import {
   RBACManager,
   TenantIsolation,
   RateLimiter,
-  FieldAccessControl,
+  _FieldAccessControl,
 } from '../../src/security/index.js';
 import { JSDBTenantIsolationError, JSDBAuthorizationError, JSDBRateLimitError } from '../../src/errors/index.js';
 

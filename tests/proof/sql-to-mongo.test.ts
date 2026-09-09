@@ -4,10 +4,10 @@
 // =====================================================
 import { describe, it, expect } from 'vitest';
 import { parseSQL, sqlToIR } from '../../src/ir/sql-parser.js';
-import { queryPlanner } from '../../src/planner/planner.js';
+import { _queryPlanner } from '../../src/planner/planner.js';
 import { SQLToMongoTranslator } from '../../src/translation/sql-to-mongo.js';
 import { MongoToSQLTranslator } from '../../src/translation/mongo-to-sql.js';
-import type { TranslationStatus } from '../../src/translation/status.js';
+import type { _TranslationStatus } from '../../src/translation/status.js';
 
 describe('SQL → MongoDB Translation', () => {
   const translator = new SQLToMongoTranslator();

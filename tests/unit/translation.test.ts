@@ -10,7 +10,7 @@ import {
   requiresConfirmation,
   describeStatus,
   worstStatus,
-  type TranslationStatus,
+  _type TranslationStatus,
 } from '../../src/translation/status.js';
 
 describe('Translation Status System', () => {

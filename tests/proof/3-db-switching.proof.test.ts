@@ -771,17 +771,17 @@ describe('PROOF #3: MySQL → MongoDB Zero-Code Switch', () => {
       }, 60000);
 
       afterAll(async () => {
-        try { await mysqlClient.raw('DROP TABLE IF EXISTS proof_users'); } catch {}
-        try { await mysqlClient.raw('DROP TABLE IF EXISTS proof_products'); } catch {}
-        try { await mysqlClient.disconnect(); } catch {}
+        try { await mysqlClient.raw('DROP TABLE IF EXISTS proof_users'); } catch { /* cleanup */ }
+        try { await mysqlClient.raw('DROP TABLE IF EXISTS proof_products'); } catch { /* cleanup */ }
+        try { await mysqlClient.disconnect(); } catch { /* cleanup */ }
 
-        try { await mongoClient.collection('proof_users').deleteMany({}); } catch {}
-        try { await mongoClient.collection('proof_products').deleteMany({}); } catch {}
-        try { await mongoClient.disconnect(); } catch {}
+        try { await mongoClient.collection('proof_users').deleteMany({}); } catch { /* cleanup */ }
+        try { await mongoClient.collection('proof_products').deleteMany({}); } catch { /* cleanup */ }
+        try { await mongoClient.disconnect(); } catch { /* cleanup */ }
 
-        try { await pgClient.raw('DROP TABLE IF EXISTS proof_users'); } catch {}
-        try { await pgClient.raw('DROP TABLE IF EXISTS proof_products'); } catch {}
-        try { await pgClient.disconnect(); } catch {}
+        try { await pgClient.raw('DROP TABLE IF EXISTS proof_users'); } catch { /* cleanup */ }
+        try { await pgClient.raw('DROP TABLE IF EXISTS proof_products'); } catch { /* cleanup */ }
+        try { await pgClient.disconnect(); } catch { /* cleanup */ }
       }, 30000);
 
       // Run the identical suite on each real DB

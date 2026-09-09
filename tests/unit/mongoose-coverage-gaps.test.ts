@@ -420,7 +420,7 @@ describe('mongoose: Schema features', () => {
 // =====================================================
 describe('mongoose: plugin()', () => {
   it('plugin() registers and applies to new models', () => {
-    const pluginFn = (model: any, opts: any) => {
+    const pluginFn = (model: any, _opts: any) => {
       // Plugin that adds a static method
       if (!model.findByPlugin) {
         model.findByPlugin = () => [];

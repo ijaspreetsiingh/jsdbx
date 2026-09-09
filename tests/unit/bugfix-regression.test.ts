@@ -16,7 +16,7 @@ import {
   compileWindowFunction,
   compileCursorPagination,
   compileBucket,
-  makeCounter,
+  _makeCounter,
 } from '../../src/adapters/postgres/compiler.js';
 import {
   compileFilter as mysqlCompileFilter,
@@ -51,8 +51,8 @@ describe('Regression: PostgreSQL Parameter Counter Concurrency', () => {
   });
 
   it('should handle interleaved compileFilter calls without corruption', () => {
-    const params: unknown[] = [];
-    const counter = makeCounter(0);
+    const _params: unknown[] = [];
+    const _counter = _makeCounter(0);
 
     // Simulate interleaved access
     const r1 = compileFilter({ a: 1 }, [], 1);
@@ -282,7 +282,7 @@ describe('Regression: CacheStats Type', () => {
 
     // Wait for TTL
     const start = Date.now();
-    while (Date.now() - start < 5) {}
+    while (Date.now() - start < 5) { /* busy wait */ }
 
     cache.get('temp'); // Should detect expiry
 

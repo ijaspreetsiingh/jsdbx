@@ -53,7 +53,7 @@ describe('QueryOptimizer', () => {
       capabilities: [],
     };
 
-    const optimized = optimizer.optimize(plan);
+    const _optimized = optimizer.optimize(plan);
     const hints = optimizer.getHints();
     const indexHints = hints.filter(h => h.type === 'index');
     expect(indexHints.length).toBeGreaterThanOrEqual(0);

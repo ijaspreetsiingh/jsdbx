@@ -137,6 +137,16 @@
     "./loader": {
       "import": "./dist/compat/loader.mjs"
     },
+    "./express": {
+      "import": "./dist/plugins/express.mjs",
+      "require": "./dist/plugins/express.js",
+      "types": "./dist/plugins/express.d.ts"
+    },
+    "./jasapi": {
+      "import": "./dist/plugins/jasapi.mjs",
+      "require": "./dist/plugins/jasapi.js",
+      "types": "./dist/plugins/jasapi.d.ts"
+    },
     "./enterprise": {
       "import": "./dist/enterprise/index.mjs",
       "require": "./dist/enterprise/index.js",

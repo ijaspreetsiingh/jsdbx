@@ -4,7 +4,7 @@
 // Stored Procedures, Triggers, Views, Transactions
 // =====================================================
 import { parseSQL as baseParse } from './sql-parser.js';
-import type { Filter, Document, SortSpec, Scalar, Update } from '../types/index.js';
+import type { SortSpec } from '../types/index.js';
 import type {
   CTEDefinition,
   WindowFunctionSpec,
@@ -16,7 +16,6 @@ import type {
   TransactionIsolation,
   SavepointDefinition,
   BatchOperation,
-  BatchOptions,
   ColumnDefinition,
   AlterTableOperation,
 } from '../types/index.js';
@@ -55,8 +54,8 @@ export function parseCTE(sql: string): CTEDefinition[] {
   const startOffset = withIdx + 4 + (recursive ? 9 : 0);
   
   // Parse CTE list: cte_name [AS (col1, col2)] AS [MATERIALIZED|NOT MATERIALIZED] (SELECT ...)
-  let pos = startOffset;
-  const rest = sql.slice(pos).trimStart();
+  const pos = startOffset;
+  const _rest = sql.slice(pos).trimStart();
   
   // Parse the CTE names/definitions separated by commas
   // Each CTE: name [(columns)] AS [MATERIALIZED] (query)
@@ -129,7 +128,7 @@ export function parseWindowFunction(sql: string): WindowFunctionSpec | null {
   const windowFunctions: WindowFunctionSpec[] = [];
   let searchPos = 0;
   
-  while (true) {
+  for (;;) {
     const overIdx = upperSql.indexOf(' OVER (', searchPos);
     if (overIdx === -1) break;
     

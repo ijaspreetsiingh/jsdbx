@@ -52,15 +52,15 @@ describe('Concurrency Conformance', () => {
   }, 30000);
 
   afterAll(async () => {
-    try { await mysql.raw(`DROP TABLE IF EXISTS \`${T}\``); } catch {}
-    try { await pg.raw(`DROP TABLE IF EXISTS "${T}"`); } catch {}
+    try { await mysql.raw(`DROP TABLE IF EXISTS \`${T}\``); } catch { /* cleanup */ }
+    try { await pg.raw(`DROP TABLE IF EXISTS "${T}"`); } catch { /* cleanup */ }
     await mysql.disconnect();
     await pg.disconnect();
   }, 10000);
 
   beforeEach(async () => {
-    try { await mysql.raw(`DELETE FROM \`${T}\``); } catch {}
-    try { await pg.raw(`DELETE FROM "${T}"`); } catch {}
+    try { await mysql.raw(`DELETE FROM \`${T}\``); } catch { /* cleanup */ }
+    try { await pg.raw(`DELETE FROM "${T}"`); } catch { /* cleanup */ }
   });
 
   describe('Parallel reads', () => {

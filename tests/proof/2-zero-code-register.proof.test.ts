@@ -105,7 +105,7 @@ describe('PROOF #2: Zero-Code Register Interception', () => {
           score INTEGER DEFAULT 0
         )`);
         await pool.query('DELETE FROM reg_users');
-      } catch {}
+      } catch { /* setup */ }
     });
 
     it('createPool() returns a proxy — not the real mysql2 driver', () => {
@@ -239,7 +239,7 @@ describe('PROOF #2: Zero-Code Register Interception', () => {
           expires_at TEXT
         )`);
         await pgPool.query('DELETE FROM pg_sessions');
-      } catch {}
+      } catch { /* setup */ }
     });
 
     it('new Pool() returns a proxy — not real pg driver', () => {
@@ -316,7 +316,7 @@ describe('PROOF #2: Zero-Code Register Interception', () => {
     beforeEach(async () => {
       try {
         await db.collection('mongo_events').deleteMany({});
-      } catch {}
+      } catch { /* cleanup */ }
     });
 
     it('MongoClient connects without real MongoDB server', async () => {
@@ -495,7 +495,7 @@ describe('PROOF #2: Zero-Code Register Interception', () => {
         for (const name of existing) {
           delete (mongoose.models as Record<string, unknown>)[name];
         }
-      } catch {}
+      } catch { /* cleanup */ }
     });
 
     it('mongoose.connect() succeeds without real MongoDB', async () => {

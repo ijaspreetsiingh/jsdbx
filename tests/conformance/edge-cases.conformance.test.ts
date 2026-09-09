@@ -82,18 +82,18 @@ describe('SQL Edge-Case Conformance', () => {
   }, 30000);
 
   afterAll(async () => {
-    try { await mysql.raw(`DROP TABLE IF EXISTS \`${T}\``); } catch {}
-    try { await mongo.collection(T).deleteMany({}); } catch {}
-    try { await pg.raw(`DROP TABLE IF EXISTS "${T}"`); } catch {}
+    try { await mysql.raw(`DROP TABLE IF EXISTS \`${T}\``); } catch { /* cleanup */ }
+    try { await mongo.collection(T).deleteMany({}); } catch { /* cleanup */ }
+    try { await pg.raw(`DROP TABLE IF EXISTS "${T}"`); } catch { /* cleanup */ }
     await mysql.disconnect();
     await mongo.disconnect();
     await pg.disconnect();
   }, 10000);
 
   beforeEach(async () => {
-    try { await mysql.raw(`DELETE FROM \`${T}\``); } catch {}
-    try { await mongo.collection(T).deleteMany({}); } catch {}
-    try { await pg.raw(`DELETE FROM "${T}"`); } catch {}
+    try { await mysql.raw(`DELETE FROM \`${T}\``); } catch { /* cleanup */ }
+    try { await mongo.collection(T).deleteMany({}); } catch { /* cleanup */ }
+    try { await pg.raw(`DELETE FROM "${T}"`); } catch { /* cleanup */ }
     for (const doc of SEED_DATA) {
       await mysql.collection(T).insertOne(doc);
       await mongo.collection(T).insertOne(doc);
@@ -370,7 +370,7 @@ describe('SQL Edge-Case Conformance', () => {
     it('field inclusion on all DBs', async () => {
       const m = await mysql.collection(T).find({}, { projection: { name: 1, age: 1 } });
       const g = await mongo.collection(T).find({}, { projection: { name: 1, age: 1 } });
-      const p = await pg.collection(T).find({}, { projection: { name: 1, age: 1 } });
+      const _p = await pg.collection(T).find({}, { projection: { name: 1, age: 1 } });
       expect(m[0].name).toBeDefined();
       expect(m[0].age).toBeDefined();
       expect(m[0].email).toBeUndefined();

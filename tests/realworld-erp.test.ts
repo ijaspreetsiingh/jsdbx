@@ -2,15 +2,15 @@
 // JSDB Real-World ERP/CRM Integration Test
 // Tests actual production queries used in enterprise apps
 // =====================================================
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, _beforeAll, _afterAll } from 'vitest';
 import {
-  parseCTE,
+  _parseCTE,
   parseWindowFunction,
-  parseStoredProcedure,
+  _parseStoredProcedure,
   parseTrigger,
-  parseView,
+  _parseView,
   parseTransaction,
-  parseDDL,
+  _parseDDL,
   parseEnterprise,
 } from '../src/ir/enterprise-parser.js';
 import {
@@ -18,12 +18,12 @@ import {
   compileWindowFunction,
   compileStoredProcedure,
   compileTrigger,
-  compileView,
+  _compileView,
   compileTransaction,
   compileCreateTable,
   compileAlterTable,
   compileCreateIndex,
-  compileEnterprise,
+  _compileEnterprise,
   type CompilerOptions,
 } from '../src/ir/enterprise-compiler.js';
 

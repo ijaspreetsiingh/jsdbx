@@ -54,15 +54,15 @@ describe('Error Semantics Conformance', () => {
   }, 30000);
 
   afterAll(async () => {
-    try { await mysql.raw(`DROP TABLE IF EXISTS \`${T}\``); } catch {}
-    try { await pg.raw(`DROP TABLE IF EXISTS "${T}"`); } catch {}
+    try { await mysql.raw(`DROP TABLE IF EXISTS \`${T}\``); } catch { /* cleanup */ }
+    try { await pg.raw(`DROP TABLE IF EXISTS "${T}"`); } catch { /* cleanup */ }
     await mysql.disconnect();
     await pg.disconnect();
   }, 10000);
 
   beforeEach(async () => {
-    try { await mysql.raw(`DELETE FROM \`${T}\``); } catch {}
-    try { await pg.raw(`DELETE FROM "${T}"`); } catch {}
+    try { await mysql.raw(`DELETE FROM \`${T}\``); } catch { /* cleanup */ }
+    try { await pg.raw(`DELETE FROM "${T}"`); } catch { /* cleanup */ }
   });
 
   describe('NOT NULL constraint violations', () => {
@@ -155,14 +155,14 @@ describe('Error Semantics Conformance', () => {
 
   describe('Connection recovery', () => {
     it('client remains usable after error', async () => {
-      try { await mysql.raw('INVALID SQL XYZ'); } catch {}
+      try { await mysql.raw('INVALID SQL XYZ'); } catch { /* expected error */ }
       // Should still work after error
       const result = await mysql.raw('SELECT 1 AS val');
       expect(result).toBeDefined();
     });
 
     it('client remains usable after error on PostgreSQL', async () => {
-      try { await pg.raw('INVALID SQL XYZ'); } catch {}
+      try { await pg.raw('INVALID SQL XYZ'); } catch { /* expected error */ }
       const result = await pg.raw('SELECT 1 AS val');
       expect(result).toBeDefined();
     });

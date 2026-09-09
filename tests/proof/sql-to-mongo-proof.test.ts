@@ -30,7 +30,7 @@ describe('PROOF: SQL → MongoDB Zero-Code Switch', () => {
     try {
       const coll = client.collection('sql_test_users');
       await coll.deleteMany({});
-    } catch {}
+    } catch { /* cleanup */ }
     await client.disconnect();
     resetSharedAdapter();
   });
